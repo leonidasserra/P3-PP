@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Livro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Editar Livro</h1>
+    <form method="POST">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" value="{{ livro.nome }}" required>
+        <label for="editora">Editora:</label>
+        <input type="text" id="editora" name="editora" value="{{ livro.editora }}" required>
+        <label for="ano">Ano:</label>
+        <input type="number" id="ano" name="ano" value="{{ livro.ano }}" required>
+        <label for="valor_pago">Valor Pago:</label>
+        <input type="number" step="0.01" id="valor_pago" name="valor_pago" value="{{ livro.valor_pago }}" required>
+        <button type="submit">Salvar</button>
+    </form>
+    <a href="{{ url_for('view_books') }}">Voltar</a>
+</body>
+</html>
