@@ -1,27 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ver Livros</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Lista de Livros</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Livros na Biblioteca</h1>
+    <h1>Lista de Livros</h1>
     <ul>
         {% for codigo, livro in books.items() %}
         <li>
-            <strong>{{ livro.nome }}</strong> - {{ livro.editora }} - {{ livro.ano }} - R$ {{ livro.valor_pago }}<br>
-            Emprestado para: {{ livro.emprestimo or 'Ninguém' }}<br>
-            Reservado por: {{ livro.reserva or 'Ninguém' }}<br>
-            <a href="{{ url_for('edit_book', codigo=codigo) }}">Editar</a> | 
-            <a href="{{ url_for('delete_book', codigo=codigo) }}">Excluir</a> | 
-            <a href="{{ url_for('reserve_book', codigo=codigo) }}">Reservar</a> | 
-            <a href="{{ url_for('loan_book', codigo=codigo) }}">Emprestar</a> | 
-            <a href="{{ url_for('return_book', codigo=codigo) }}">Devolver</a>
+            <strong>Nome:</strong> {{ livro.nome }}<br>
+            <strong>Editora:</strong> {{ livro.editora }}<br>
+            <strong>Ano:</strong> {{ livro.ano }}<br>
+            <strong>Valor Pago:</strong> {{ livro.valorpago }}<br>
+            <a href="{{ url_for('edit_book', codigo=codigo) }}">Editar</a> - 
+            <a href="{{ url_for('confirm_delete', codigo=codigo) }}">Excluir</a>
         </li>
         {% endfor %}
     </ul>
-    <a href="{{ url_for('index') }}">Voltar</a>
+    <a href="{{ url_for('add_book') }}">Adicionar um novo livro</a>
 </body>
 </html>
